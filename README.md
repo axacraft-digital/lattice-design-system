@@ -1,258 +1,118 @@
-# Lattice Design System
+# Lattice
 
-## Purpose
+Lattice is a design system built around derivation instead of selection.
 
-This folder contains the Lattice design system — a framework for algorithmically derived, behaviorally governed interface design.
+Instead of treating design as a series of isolated choices like picking font sizes, spacing values, button styles, and section layouts one by one, Lattice defines the logic that governs those decisions so interfaces stay coherent as they evolve.
 
-Its purpose is to make design and implementation decisions repeatable, system-bound, and legible across designers, developers, and teams. These documents are not inspiration notes. They are the operating specification for how the interface should look, feel, and behave.
+It is designed for teams who want design and implementation to stay structurally aligned, not drift apart.
 
-The system is designed to prevent:
+## Core Idea
 
-- ad hoc visual decisions
-- local component styling drift
-- page design that ignores the underlying rules
-- implementation that bypasses the approved design logic
+Most design systems document outputs.
 
-If a design or implementation decision conflicts with this folder, the decision is wrong unless explicitly approved.
+Lattice starts by documenting the rules that produce those outputs.
 
----
+That means:
 
-## System Map
+- typography is derived from a governed fluid scale
+- spacing is separated by behavior, not flattened into one ladder
+- layout responds to composition, not only breakpoints
+- color is defined semantically from a perceptual source model
+- components consume the system instead of inventing local rules
+- sections are composed from archetypes instead of blank-canvas improvisation
 
-The design system is organized in two layers:
+## What's In This Repository
 
-### 1. Foundations
+### Foundations
 
-These define the governing logic of the interface.
+- `typography.md`
+- `spacing.md`
+- `grid.md`
+- `colors.md`
 
-- [typography.md](./typography.md)
-  Three-voice type system, fluid type scale, semantic/visual decoupling, typographic rules.
+### Consumption Layers
 
-- [spacing.md](./spacing.md)
-  Behavioral spacing model with optical, component, and layout layers plus semantic spacing roles.
+- `prose.md`
+- `density.md`
+- `surfaces.md`
+- `links.md`
+- `states.md`
 
-- [grid.md](./grid.md)
-  Compositional field model with canvas/content/reading width regimes, allocation archetypes, and layout adaptation logic.
+### Components
 
-- [colors.md](./colors.md)
-  OKLCH-based color architecture with primitive families, semantic UI tokens, and runtime variable logic.
+- `components.md`
+- `buttons.md`
+- `forms.md`
+- `badges.md`
 
-### 2. Applied System
+### Composition
 
-These define how the foundations combine into actual interface structures.
+- `motion.md`
+- `section-archetypes.md`
 
-- [prose.md](./prose.md)
-  Rich text and long-form content container logic for bare HTML, list behavior, inline links, and reading-measure defaults.
+The full internal system map and dependency guide lives in [`SYSTEM-MAP.md`](./SYSTEM-MAP.md).
 
-- [components.md](./components.md)
-  Component architecture: primitives, structured components, patterns, and system consumption rules.
+## Who This Is For
 
-- [buttons.md](./buttons.md)
-  Action primitive system with governed roles and a shared control size axis.
+Lattice is for:
 
-- [forms.md](./forms.md)
-  Form primitives and field composition rules aligned to buttons and type roles.
+- designers who want systems to be operational, not inspirational
+- developers who want clearer implementation rules
+- teams tired of local UI drift
+- people building editorial, commerce, product, or brand interfaces that need structural consistency
 
-- [badges.md](./badges.md)
-  Compact badge and tag primitives for informational labels and filter-like UI.
+## What Makes Lattice Different
 
-- [density.md](./density.md)
-  Context-level spatial character system for compact, default, and relaxed interface rhythm.
+Lattice is not:
 
-- [surfaces.md](./surfaces.md)
-  Structural surface hierarchy for page planes, raised layers, muted callouts, dark sections, and overlay behavior.
+- a UI kit
+- a component library
+- a token dump
+- a moodboard
+- a set of nice defaults
 
-- [links.md](./links.md)
-  Link families for inline, standalone, navigational, and inverse link behavior.
+It is a governed interface system.
 
-- [states.md](./states.md)
-  Cross-component state logic for disabled, selected, loading, focus, scrims, and text selection.
+Its purpose is to reduce arbitrary decisions by defining the grammar behind interface construction.
 
-- [motion.md](./motion.md)
-  Motion and interaction rules for feedback, state change, entrances, and performance-safe behavior.
+## Reading Order
 
-- [section-archetypes.md](./section-archetypes.md)
-  Approved reusable section families that translate the design system into actual page-building grammar.
+If you're new to the system, read in this order:
 
----
-
-## Reading Order by Role
-
-### Designers
-
-Read in this order:
-
-1. [typography.md](./typography.md)
-2. [spacing.md](./spacing.md)
-3. [grid.md](./grid.md)
-4. [colors.md](./colors.md)
-5. [prose.md](./prose.md)
-6. [components.md](./components.md)
-7. [buttons.md](./buttons.md)
-8. [forms.md](./forms.md)
-9. [badges.md](./badges.md)
-10. [density.md](./density.md)
-11. [surfaces.md](./surfaces.md)
-12. [links.md](./links.md)
-13. [states.md](./states.md)
-14. [motion.md](./motion.md)
-15. [section-archetypes.md](./section-archetypes.md)
-
-### Developers
-
-Read in this order:
-
-1. [typography.md](./typography.md)
-2. [spacing.md](./spacing.md)
-3. [grid.md](./grid.md)
-4. [colors.md](./colors.md)
-5. [prose.md](./prose.md)
-6. [components.md](./components.md)
-7. [buttons.md](./buttons.md)
-8. [forms.md](./forms.md)
-9. [badges.md](./badges.md)
-10. [density.md](./density.md)
-11. [surfaces.md](./surfaces.md)
-12. [links.md](./links.md)
-13. [states.md](./states.md)
-14. [motion.md](./motion.md)
-15. [section-archetypes.md](./section-archetypes.md)
-
-### Strategists / Content
-
-Read in this order:
-
-1. [colors.md](./colors.md)
-2. [typography.md](./typography.md)
-3. [prose.md](./prose.md)
-4. [buttons.md](./buttons.md)
-5. [density.md](./density.md)
-6. [surfaces.md](./surfaces.md)
-7. [links.md](./links.md)
-8. [states.md](./states.md)
-9. [section-archetypes.md](./section-archetypes.md)
-
-### QA / Accessibility
-
-Read in this order:
-
-1. [typography.md](./typography.md)
-2. [spacing.md](./spacing.md)
-3. [grid.md](./grid.md)
-4. [colors.md](./colors.md)
-5. [prose.md](./prose.md)
-6. [components.md](./components.md)
-7. [buttons.md](./buttons.md)
-8. [forms.md](./forms.md)
-9. [badges.md](./badges.md)
-10. [density.md](./density.md)
-11. [surfaces.md](./surfaces.md)
-12. [links.md](./links.md)
-13. [states.md](./states.md)
-14. [motion.md](./motion.md)
-15. [section-archetypes.md](./section-archetypes.md)
-
----
-
-## Dependency Logic
-
-The files are not equal peers. They depend on each other in a specific way.
-
-### Foundation Dependency Order
-
-1. Typography defines hierarchy and readable scale.
-2. Spacing defines spatial behavior and rhythm.
-3. Grid defines occupancy, containment, and compositional allocation.
-4. Color defines surface hierarchy, text contrast, and action meaning.
-
-These four files define the underlying language of the interface.
-
-### Applied Dependency Order
-
-5. Prose maps the foundations onto real authored content.
-6. Components inherit from typography, spacing, grid, and color.
-7. Buttons define the primary action primitive and shared control size model.
-8. Forms and badges inherit that primitive logic for everyday UI use.
-9. Density defines the spatial character contexts use when consuming the spacing system.
-10. Surfaces define the interface planes those components and sections occupy.
-11. Links define the text-level interaction families that sit between prose and buttons.
-12. States define cross-component interaction behavior and availability logic.
-13. Motion governs how those structures respond and transition.
-14. Section archetypes combine all of the above into reusable page-building units.
-
-This means:
-
-- prose should not invent its own type scale or spacing logic
-- components should not invent their own private spacing or color system
-- density should not be adjusted through arbitrary local spacing overrides
-- surfaces should not be chosen ad hoc at the section or component level
-- states should not be redefined locally inside every primitive
-- motion should not contradict component or layout logic
-- section archetypes should not bypass the foundations
-
----
-
-## Rules of Use
-
-1. Do not create local tokens when a system token already exists.
-2. Do not build new sections before identifying the correct archetype.
-3. Do not design pages from blank canvases when an approved archetype already fits.
-4. Do not style components directly from primitive color tokens when semantic tokens exist.
-5. Do not introduce ad hoc spacing rules inside components or sections.
-6. Do not bypass the prose container for merchant-authored rich text.
-7. Do not bypass reading measure for long-form copy.
-8. Do not create a new archetype unless the existing system genuinely cannot express the need.
-
----
-
-## What This Folder Does Not Contain
-
-This folder does not define:
-
-- page-by-page final compositions
-- merchant content strategy
-- SEO content hierarchy
-- Shopify implementation details
-- copywriting
-
-Those are separate layers of work.
-
-This folder defines the design language those layers must obey.
-
----
+1. `typography.md`
+2. `spacing.md`
+3. `grid.md`
+4. `colors.md`
+5. `prose.md`
+6. `components.md`
+7. `buttons.md`
+8. `forms.md`
+9. `badges.md`
+10. `density.md`
+11. `surfaces.md`
+12. `links.md`
+13. `states.md`
+14. `motion.md`
+15. `section-archetypes.md`
 
 ## Current Status
 
-The foundational design system is in place and is intended to be read as a real system, not a loose collection of style notes.
+Lattice is currently documentation-first.
 
-Current contents:
+It defines the design logic, system layers, primitives, and archetypes needed to implement a coherent interface system across design and development.
 
-- [typography.md](./typography.md)
-- [spacing.md](./spacing.md)
-- [grid.md](./grid.md)
-- [colors.md](./colors.md)
-- [prose.md](./prose.md)
-- [components.md](./components.md)
-- [buttons.md](./buttons.md)
-- [forms.md](./forms.md)
-- [badges.md](./badges.md)
-- [density.md](./density.md)
-- [surfaces.md](./surfaces.md)
-- [links.md](./links.md)
-- [states.md](./states.md)
-- [motion.md](./motion.md)
-- [section-archetypes.md](./section-archetypes.md)
+A coded implementation layer may follow, but the documentation is the source of truth.
 
-The next layer after this folder is page composition and actual storefront design execution.
+## Philosophy
 
----
+Typical design asks:
 
-## Strategic Takeaway
+"What looks right here?"
 
-The design system is not a moodboard.
-It is not a token dump.
-It is not a list of "nice defaults."
+Lattice asks:
 
-It is the grammar of the Lattice interface.
+"What system can produce the right answer here, and keep producing it as the interface changes?"
 
-Start here.
+## License
+
+No license has been declared yet.

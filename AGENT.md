@@ -39,21 +39,22 @@ This repository does not define page-by-page compositions, merchant strategy, SE
 When answering questions, reviewing work, or generating implementation guidance, read and apply the specs in this order:
 
 1. `README.md`
-2. `typography.md`
-3. `spacing.md`
-4. `grid.md`
-5. `colors.md`
-6. `prose.md`
-7. `components.md`
-8. `buttons.md`
-9. `forms.md`
-10. `badges.md`
-11. `density.md`
-12. `surfaces.md`
-13. `links.md`
-14. `states.md`
-15. `motion.md`
-16. `section-archetypes.md`
+2. `SYSTEM-MAP.md`
+3. `typography.md`
+4. `spacing.md`
+5. `grid.md`
+6. `colors.md`
+7. `prose.md`
+8. `components.md`
+9. `buttons.md`
+10. `forms.md`
+11. `badges.md`
+12. `density.md`
+13. `surfaces.md`
+14. `links.md`
+15. `states.md`
+16. `motion.md`
+17. `section-archetypes.md`
 
 If two decisions appear to conflict, prefer the earlier foundational file unless the later file is clearly defining a consumption rule that depends on it.
 
@@ -94,10 +95,11 @@ Avoid soft, bubbly, overly colorful, shadow-heavy, or trend-driven UI unless the
 When the user asks for design or implementation help:
 
 1. Read `README.md` first.
-2. Read only the spec files relevant to the request, following the dependency order above.
-3. Identify which foundation rules govern the request.
-4. Map the request to existing semantic tokens, component roles, density modes, surface planes, and section archetypes before proposing anything new.
-5. In responses, cite the specific files that justify the decision.
+2. Read `SYSTEM-MAP.md` next for the internal dependency model.
+3. Read only the spec files relevant to the request, following the dependency order above.
+4. Identify which foundation rules govern the request.
+5. Map the request to existing semantic tokens, component roles, density modes, surface planes, and section archetypes before proposing anything new.
+6. In responses, cite the specific files that justify the decision.
 
 When the user asks for a new component or section:
 
