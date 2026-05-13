@@ -105,7 +105,7 @@ Use for:
   align-items: center;
   gap: var(--spacing-cluster-tight);
   color: var(--color-link);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   line-height: var(--leading-normal);
@@ -136,7 +136,7 @@ Navigation links are structural orientation elements, not prose links.
 ```css
 .link-nav {
   color: var(--color-link-nav);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   line-height: var(--leading-normal);

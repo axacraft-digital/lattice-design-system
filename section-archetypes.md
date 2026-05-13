@@ -84,7 +84,7 @@ Choice depends on whether the hero is text-led or image-led.
 
 ### Typography
 
-- primary statement uses `heading-display` or `heading-1--serif`
+- primary statement uses `heading-display` or `heading-1--editorial`
 - supporting copy uses `text-lg`
 - optional eyebrow uses the mono-label role
 
@@ -294,7 +294,7 @@ Explain the mechanism, evidence, or product rationale through a composed two-reg
 
 ### Typography
 
-- section intro uses `heading-1`, `heading-1--serif`, or `heading-2`
+- section intro uses `heading-1`, `heading-1--editorial`, or `heading-2`
 - payload text should respect reading measure even inside a wide region
 
 ### Surface and Color Logic
@@ -557,7 +557,7 @@ Create a reflective, brand-defining text moment.
 
 ### Typography
 
-- often uses `heading-1--serif`
+- often uses `heading-1--editorial`
 - body text should remain highly readable and measured
 
 ### Surface and Color Logic

@@ -149,11 +149,11 @@ This allows the system to frame content differently without inventing arbitrary 
 
 ## Layout Frames
 
-Sections use one of four frame modes.
+Sections use one of six frame modes.
 
 ### Contained Frame
 
-The outer wrapper is constrained to the canvas width and padded by the default inline inset.
+The outer wrapper is constrained to the content field and padded by the default inline inset.
 
 Use for:
 
@@ -161,6 +161,27 @@ Use for:
 - ingredient features
 - testimonials
 - CTA blocks
+
+This is the normal working mode of the interface.
+
+### Canvas-Contained Frame
+
+The section uses the wider canvas field while remaining centered inside the page.
+
+Use for:
+
+- large statement sections
+- premium editorial intros
+- image and text compositions that need more room
+- sections that should feel more expansive without touching the viewport edge
+
+Rules:
+
+- the section becomes wider than the normal content rail
+- the section remains centered and still respects the page margins
+- text inside this frame should usually still snap to content width or reading width
+
+This is the mode used when a section needs more architectural presence but does not need edge anchoring.
 
 ### Wide Frame
 
@@ -195,6 +216,25 @@ Use for:
 Full-bleed surfaces are allowed. Unconstrained full-bleed content is not.
 
 For standard bleed surfaces, inner content should still align to content width or reading width. However, the hero section is a special case: it may use a wider, more theatrical content field than standard contained sections, provided that the content placement remains intentional and bounded.
+
+### Viewport-Anchored Frame
+
+The section participates in the wider canvas logic, but a chosen region is allowed to tether to the left or right viewport edge.
+
+Use for:
+
+- editorial split sections with image-led drama
+- landscape modules
+- selective premium compositions where one side should visibly lock to the browser edge
+
+Rules:
+
+- this is a deliberate exception, not a default section mode
+- only the designated region, usually media, may anchor to the viewport edge
+- text should remain aligned to the composed page structure
+- viewport anchoring should be used selectively so it retains power
+
+This is not the same as a canvas-contained section. A canvas-contained section is still centered. A viewport-anchored section intentionally breaks that centered edge on one side.
 
 ---
 

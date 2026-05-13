@@ -31,6 +31,14 @@ This is the color equivalent of the spacing system's behavioral layers and the g
 Components should consume semantic tokens.
 Primitive tokens exist to support system consistency and future remapping.
 
+### The Primitive Layer Is The Reskin Surface
+
+The specific palette documented in this file — Neutral Creams, Warm Stones, Charcoals, a warm peach/amber Product Accent, and the four status families — is an *example implementation* of the architecture, not the system itself. It describes one brand expression: warm, editorial, wellness-coded.
+
+When Lattice is consumed by a different brand, the primitive layer is what changes. The semantic tokens (`--color-bg-page`, `--color-text-primary`, `--color-action-primary-bg`) keep their names and their roles; the primitives they reference get swapped. A clinical-corporate brand might replace creams and stones with cool neutrals and a saturated cobalt-and-scarlet pair. A tech-utility brand might replace them with deep slates and a single high-chroma accent. Components consuming `--color-action-primary-bg` do not change.
+
+This means a brand swap is, in principle, a primitive-layer edit — not a refactor of every component. The example palette below is the warm-editorial reference; treat it as illustrative, not canonical.
+
 ---
 
 ## Why OKLCH Is the Source of Truth
