@@ -95,7 +95,6 @@ This token layer keeps the size model portable across buttons, inputs, selects, 
   line-height: 1;
   text-align: center;
   text-decoration: none;
-  border: 1px solid transparent;
   border-radius: 0;
   white-space: nowrap;
 }
@@ -103,6 +102,8 @@ This token layer keeps the size model portable across buttons, inputs, selects, 
 
 Buttons are square-cornered by default.
 They rely on color, type, and spacing for character rather than soft geometry.
+
+When a button needs a stroke, the stroke is rendered as an inset treatment inside the existing footprint rather than adding to the outer size.
 
 ---
 
@@ -127,9 +128,24 @@ Use as the companion action to a primary or accent action.
 .button--secondary {
   background: var(--color-action-secondary-bg);
   color: var(--color-action-secondary-text);
-  border-color: var(--color-action-secondary-border);
+  position: relative;
+}
+
+.button--secondary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-action-secondary-border);
+  border-radius: inherit;
+  pointer-events: none;
 }
 ```
+
+Rules:
+
+1. Secondary and outline-style strokes are inset, not additive.
+2. A stroked button must keep the same outer height and width as a filled button of the same size.
+3. The stroke layer is non-interactive (`pointer-events: none`) so it does not interfere with hit testing or focus targeting.
 
 ### Accent
 

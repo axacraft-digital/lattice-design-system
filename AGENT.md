@@ -23,6 +23,7 @@ If a proposed implementation, component, section, or token conflicts with these 
   - `buttons.md`
   - `forms.md`
   - `badges.md`
+  - `icons.md`
   - `density.md`
   - `surfaces.md`
   - `links.md`
@@ -49,12 +50,13 @@ When answering questions, reviewing work, or generating implementation guidance,
 9. `buttons.md`
 10. `forms.md`
 11. `badges.md`
-12. `density.md`
-13. `surfaces.md`
-14. `links.md`
-15. `states.md`
-16. `motion.md`
-17. `section-archetypes.md`
+12. `icons.md`
+13. `density.md`
+14. `surfaces.md`
+15. `links.md`
+16. `states.md`
+17. `motion.md`
+18. `section-archetypes.md`
 
 If two decisions appear to conflict, prefer the earlier foundational file unless the later file is clearly defining a consumption rule that depends on it.
 

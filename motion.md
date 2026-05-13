@@ -37,6 +37,86 @@ Use `--ease-default` for everything unless there's a specific reason not to. Nev
 
 ---
 
+## Motion Contracts
+
+These are the system-wide rules that govern *every* animation in the interface, not just one category. A new motion that violates these rules is a finding, regardless of how good it looks in isolation.
+
+### 1. Reduced motion is a system-wide contract
+
+Every animation must honor `prefers-reduced-motion: reduce`. This is not a special case for scroll entrances; it applies to every transition in the system — hover shifts, focus rings, accordions, route transitions, modal sheets, drag feedback, page reveals.
+
+The implementation rule is the same in every case: when reduced motion is requested, the visual end state still arrives, but instantly and without animation. Content is not hidden because the user opted out; the animation simply collapses to zero duration.
+
+Practitioners working in code-side tooling (React, Vue, Svelte) should expose this through a single hook or utility (e.g., a `useReducedMotion()` wrapper) so that every animated component consumes it the same way. There should not be one component that respects the preference and another that ignores it.
+
+### 2. Exit is shorter than enter
+
+Exit animations should run at 60–70% of the corresponding enter duration.
+
+The reason is perceptual: entering content is the user's reward and benefits from being given a moment. Exiting content is friction and should resolve quickly. Symmetric durations make exits feel slow even when the math is identical.
+
+This applies to modals closing, drawers retracting, dropdowns dismissing, and any state transition with both an open and a close phase.
+
+### 3. Modals and sheets animate from their trigger source
+
+When a modal, sheet, drawer, or popover opens, the animation should originate from the element that triggered it — not from the screen edge or the center of the viewport.
+
+This preserves spatial continuity. The user understands that the new surface came from somewhere they pointed at, which makes dismissal feel reversible rather than disorienting.
+
+In practice this usually means a small scale and translate from the trigger's bounding box to the surface's resting position, or a directional slide from the trigger side.
+
+### 4. Direction expresses hierarchy
+
+When transitioning between routes or hierarchical states, direction is meaningful and consistent:
+
+- **Forward / deeper:** content enters from the right or below, exits to the left or above.
+- **Back / shallower:** content enters from the left or above, exits to the right or below.
+
+This is a small rule with outsized effect. Once the user's eye has learned the pattern, navigation feels structurally legible without any explanation.
+
+Lateral transitions (sibling routes at the same hierarchy level) should use crossfade rather than direction, so direction is reserved for hierarchy changes.
+
+### 5. Animations are interruptible
+
+A user action during an animation must be respected immediately. If the user taps a button while a panel is animating closed, the close completes (or jumps to the end state) and the user's tap takes effect. Animations must not block input.
+
+This rules out two common failure modes: long page transitions that swallow taps, and modals that re-open mid-close because the close animation hadn't "released" yet.
+
+### 6. Transform and opacity only
+
+This rule already lives in the Performance Constraints section below, but it belongs here too: never animate `width`, `height`, `top`, `left`, `margin`, `padding`, or `border`. Use `transform` and `opacity`. Anything else triggers layout and creates jank.
+
+### 7. Spring physics for natural-feeling interactions
+
+For motions that follow user input — drag, pull-to-refresh, modal sheet snap, tab transitions on touch — prefer spring physics over fixed-duration cubic-bezier curves.
+
+Springs feel more natural because their deceleration matches how the user expects matter to behave when released. Fixed cubic-bezier easing is correct for state-based transitions that don't track gesture velocity.
+
+---
+
+## Reduced Motion
+
+Reduced motion is documented under Motion Contracts above. The implementation pattern, repeated here for clarity:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+```
+
+A blanket reset like this is the floor. It guarantees that no future component slips through. Component-level overrides may set `transition: none` or use a hook like `useReducedMotion()` to skip an animation entirely; both are acceptable, but the global reset must remain in place as a safety net.
+
+The visual end state must still arrive — reduced motion suppresses the animation, not the outcome.
+
+---
+
 ## Hover States
 
 ### Buttons

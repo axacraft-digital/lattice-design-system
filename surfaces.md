@@ -211,6 +211,52 @@ Rules:
 
 ---
 
+## Stacking Order
+
+The surface model determines what each plane *is*. The stacking-order model determines how those planes layer when they overlap.
+
+A governed z-index scale prevents the most common drift in any growing interface: every contributor reaching for an arbitrary `z-50`, `z-99`, or `z-9999` until the layering becomes a guessing game.
+
+### The Scale
+
+```css
+:root {
+  --z-base:      0;     /* default page content */
+  --z-raised:    10;    /* cards or content lifted from the page on hover */
+  --z-sticky:    20;    /* sticky section headers, sticky form labels */
+  --z-nav:       30;    /* site header */
+  --z-dropdown:  40;    /* mega-menus, services dropdowns, command palette */
+  --z-overlay:   50;    /* mobile nav drawer, side sheets, scrims */
+  --z-modal:     60;    /* dialog modals */
+  --z-toast:     70;    /* toast / snackbar notifications */
+  --z-popover:   80;    /* tooltips, popovers, hover help */
+  --z-debug:     9999;  /* reserved for dev overlays — never ships */
+}
+```
+
+### Why Popover Sits Above Modal
+
+The most counterintuitive line in the scale is that `--z-popover` sits *above* `--z-modal`. This is intentional.
+
+Tooltips and popovers exist to provide contextual help. If a modal contains a form with a complex field, the tooltip explaining that field must be reachable. Putting popover below modal would either make the help invisible or force the user to dismiss the modal to read it. The latter is worse — they lose their work to learn how to do it.
+
+Toasts sit between modal and popover for the same reason: a confirmation that fires from inside a modal should still be visible.
+
+### Rules of Use
+
+1. **Never invent an arbitrary z-value.** No `z-index: 999`. No `z-50` Tailwind utility chosen because it "looks high enough." Every stacked element consumes a token from the scale above.
+2. **One token per stacking role.** Do not introduce a new token unless the existing scale genuinely cannot express the relationship. If a new role appears, document it in the same change that introduces it.
+3. **Stacking is a system decision, not a component decision.** A component author should not need to know the absolute z-index value of any other component. They consume the role token and trust the scale.
+4. **Debug overlays use `--z-debug` and never ship.** This is a development-only surface. Production builds should fail to build (or visibly warn) if a `--z-debug` value reaches the deployed bundle.
+
+### What Does Not Belong On The Scale
+
+Decorative effects (drop shadows, glows, blurred backgrounds) are a *visual* layer, not a *stacking* layer. They should be expressed through surface tokens, color tokens, or component-level styling — never through a z-index escalation.
+
+If a contributor reaches for z-index to make something "feel more important," that is a signal to fix the surface, contrast, or composition — not to push the element up the stack.
+
+---
+
 ## Surface Pairing Rules
 
 Every surface implies companion tokens.

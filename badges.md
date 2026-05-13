@@ -80,7 +80,7 @@ These are compact UI primitives, not primary actions.
   gap: var(--space-optical-2);
   min-height: var(--tag-height-md);
   padding-inline: var(--tag-padding-inline-md);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   line-height: 1;

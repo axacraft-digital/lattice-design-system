@@ -56,6 +56,9 @@ These define how the foundations combine into actual interface structures.
 - [badges.md](./badges.md)
   Compact badge and tag primitives for informational labels and filter-like UI.
 
+- [icons.md](./icons.md)
+  Icon system: closed family, size axis, color via currentColor, hit-area independence, and the rules that keep an icon vocabulary from sprawling.
+
 - [density.md](./density.md)
   Context-level spatial character system for compact, default, and relaxed interface rhythm.
 
@@ -91,12 +94,13 @@ Read in this order:
 7. [buttons.md](./buttons.md)
 8. [forms.md](./forms.md)
 9. [badges.md](./badges.md)
-10. [density.md](./density.md)
-11. [surfaces.md](./surfaces.md)
-12. [links.md](./links.md)
-13. [states.md](./states.md)
-14. [motion.md](./motion.md)
-15. [section-archetypes.md](./section-archetypes.md)
+10. [icons.md](./icons.md)
+11. [density.md](./density.md)
+12. [surfaces.md](./surfaces.md)
+13. [links.md](./links.md)
+14. [states.md](./states.md)
+15. [motion.md](./motion.md)
+16. [section-archetypes.md](./section-archetypes.md)
 
 ### Developers
 
@@ -111,12 +115,13 @@ Read in this order:
 7. [buttons.md](./buttons.md)
 8. [forms.md](./forms.md)
 9. [badges.md](./badges.md)
-10. [density.md](./density.md)
-11. [surfaces.md](./surfaces.md)
-12. [links.md](./links.md)
-13. [states.md](./states.md)
-14. [motion.md](./motion.md)
-15. [section-archetypes.md](./section-archetypes.md)
+10. [icons.md](./icons.md)
+11. [density.md](./density.md)
+12. [surfaces.md](./surfaces.md)
+13. [links.md](./links.md)
+14. [states.md](./states.md)
+15. [motion.md](./motion.md)
+16. [section-archetypes.md](./section-archetypes.md)
 
 ### Strategists / Content
 
@@ -145,12 +150,13 @@ Read in this order:
 7. [buttons.md](./buttons.md)
 8. [forms.md](./forms.md)
 9. [badges.md](./badges.md)
-10. [density.md](./density.md)
-11. [surfaces.md](./surfaces.md)
-12. [links.md](./links.md)
-13. [states.md](./states.md)
-14. [motion.md](./motion.md)
-15. [section-archetypes.md](./section-archetypes.md)
+10. [icons.md](./icons.md)
+11. [density.md](./density.md)
+12. [surfaces.md](./surfaces.md)
+13. [links.md](./links.md)
+14. [states.md](./states.md)
+15. [motion.md](./motion.md)
+16. [section-archetypes.md](./section-archetypes.md)
 
 ---
 
@@ -173,19 +179,22 @@ These four files define the underlying language of the interface.
 6. Components inherit from typography, spacing, grid, and color.
 7. Buttons define the primary action primitive and shared control size model.
 8. Forms and badges inherit that primitive logic for everyday UI use.
-9. Density defines the spatial character contexts use when consuming the spacing system.
-10. Surfaces define the interface planes those components and sections occupy.
-11. Links define the text-level interaction families that sit between prose and buttons.
-12. States define cross-component interaction behavior and availability logic.
-13. Motion governs how those structures respond and transition.
-14. Section archetypes combine all of the above into reusable page-building units.
+9. Icons define the small-glyph vocabulary buttons, forms, badges, and links consume.
+10. Density defines the spatial character contexts use when consuming the spacing system.
+11. Surfaces define the interface planes those components and sections occupy, including the stacking-order scale that governs overlapping planes.
+12. Links define the text-level interaction families that sit between prose and buttons.
+13. States define cross-component interaction behavior and availability logic.
+14. Motion governs how those structures respond and transition.
+15. Section archetypes combine all of the above into reusable page-building units.
 
 This means:
 
 - prose should not invent its own type scale or spacing logic
 - components should not invent their own private spacing or color system
+- icons should not be sized, colored, or styled outside the icon system
 - density should not be adjusted through arbitrary local spacing overrides
 - surfaces should not be chosen ad hoc at the section or component level
+- stacking should not introduce arbitrary z-index values outside the surfaces scale
 - states should not be redefined locally inside every primitive
 - motion should not contradict component or layout logic
 - section archetypes should not bypass the foundations

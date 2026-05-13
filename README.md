@@ -44,6 +44,7 @@ That means:
 - `buttons.md`
 - `forms.md`
 - `badges.md`
+- `icons.md`
 
 ### Composition
 
@@ -88,12 +89,13 @@ If you're new to the system, read in this order:
 7. `buttons.md`
 8. `forms.md`
 9. `badges.md`
-10. `density.md`
-11. `surfaces.md`
-12. `links.md`
-13. `states.md`
-14. `motion.md`
-15. `section-archetypes.md`
+10. `icons.md`
+11. `density.md`
+12. `surfaces.md`
+13. `links.md`
+14. `states.md`
+15. `motion.md`
+16. `section-archetypes.md`
 
 ## Current Status
 

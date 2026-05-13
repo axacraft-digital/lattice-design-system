@@ -71,7 +71,7 @@ Labels are explicit. They do not rely on placeholders to do their job.
 
 ```css
 .field__label {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   line-height: var(--leading-normal);
@@ -94,7 +94,7 @@ Rules:
   inline-size: 100%;
   min-height: var(--control-height-md);
   padding-inline: var(--control-padding-inline-md);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--control-text-md);
   font-weight: var(--weight-regular);
   color: var(--color-text-primary);
@@ -159,7 +159,7 @@ If a custom chevron is used, it should be monochrome and inherit current text co
 
 ```css
 .field__help {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--weight-regular);
   line-height: var(--leading-normal);
@@ -167,7 +167,7 @@ If a custom chevron is used, it should be monochrome and inherit current text co
 }
 
 .field__error {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   line-height: var(--leading-normal);

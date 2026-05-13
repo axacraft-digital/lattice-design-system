@@ -147,7 +147,7 @@ Bare rich text elements should resolve to the following roles:
 .prose :where(p, ul, ol, li),
 .prose-sm :where(p, ul, ol, li),
 .prose-lg :where(p, ul, ol, li) {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--prose-body-size);
   font-weight: var(--weight-regular);
   line-height: var(--prose-body-leading);
@@ -157,7 +157,7 @@ Bare rich text elements should resolve to the following roles:
 .prose :where(h1, h2, h3),
 .prose-sm :where(h1, h2, h3),
 .prose-lg :where(h1, h2, h3) {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-weight: var(--weight-medium);
   color: var(--color-text-primary);
 }
@@ -186,7 +186,7 @@ Bare rich text elements should resolve to the following roles:
 .prose :where(h4, h5, h6),
 .prose-sm :where(h4, h5, h6),
 .prose-lg :where(h4, h5, h6) {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-base);
   font-weight: var(--weight-medium);
   line-height: var(--leading-snug);
@@ -290,7 +290,7 @@ List rules:
 .prose :where(code),
 .prose-sm :where(code),
 .prose-lg :where(code) {
-  font-family: var(--font-mono);
+  font-family: var(--font-data);
   font-size: 0.92em;
   letter-spacing: 0.02em;
   color: var(--color-text-primary);
@@ -308,7 +308,7 @@ Blockquotes need explicit treatment so they do not default to generic browser in
 ```css
 .prose :where(blockquote),
 .prose-lg :where(blockquote) {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-lg);
   font-weight: var(--weight-regular);
   line-height: var(--leading-relaxed);
@@ -318,7 +318,7 @@ Blockquotes need explicit treatment so they do not default to generic browser in
 }
 
 .prose-sm :where(blockquote) {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
   color: var(--color-text-primary);

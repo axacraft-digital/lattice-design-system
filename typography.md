@@ -12,11 +12,19 @@ Typography is the primary vehicle for brand personality. The restrained color pa
 
 Three families. Three distinct roles. No overlap.
 
+### Naming Principle
+
+Variable names describe the **role** the typeface plays in the system — editorial, body, data — not the visual family that currently occupies that role. The right side of the assignment can swap without renaming the variable. A future redesign that replaces IBM Plex Serif with a non-serif editorial face will not leave the system saying `--font-serif` and rendering something that is not a serif.
+
+The same principle governs class modifiers. `.heading-1--editorial` names the register the variant activates (an editorial moment), not the family it currently uses to express it.
+
+This is the typography-layer corollary of the spec's broader rule against context-specific classes (Rule #11): names describe the job, not the implementation detail. The system survives any font swap because no name encodes a font-family assumption.
+
 ```css
 :root {
-  --font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
+  --font-editorial: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-data: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
 }
 ```
 
@@ -126,7 +134,7 @@ These classes control visual presentation only. They do not imply any HTML eleme
 ```css
 .heading-display {
   /* The hero statement — largest heading size */
-  font-family: var(--font-serif);
+  font-family: var(--font-editorial);
   font-size: var(--text-4xl);
   font-weight: var(--weight-light);
   line-height: var(--leading-tight);
@@ -135,16 +143,16 @@ These classes control visual presentation only. They do not imply any HTML eleme
 
 .heading-1 {
   /* Primary section headlines — large, impactful */
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-3xl);
   font-weight: var(--weight-medium);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-normal);
 }
 
-.heading-1--serif {
+.heading-1--editorial {
   /* Editorial variant of heading-1 — for 1–2 key sections per page */
-  font-family: var(--font-serif);
+  font-family: var(--font-editorial);
   font-size: var(--text-3xl);
   font-weight: var(--weight-light);
   line-height: var(--leading-tight);
@@ -153,7 +161,7 @@ These classes control visual presentation only. They do not imply any HTML eleme
 
 .heading-2 {
   /* Standard section headlines */
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-2xl);
   font-weight: var(--weight-medium);
   line-height: var(--leading-tight);
@@ -162,7 +170,7 @@ These classes control visual presentation only. They do not imply any HTML eleme
 
 .heading-3 {
   /* Subsection heads, card group titles */
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-xl);
   font-weight: var(--weight-medium);
   line-height: var(--leading-snug);
@@ -171,7 +179,7 @@ These classes control visual presentation only. They do not imply any HTML eleme
 
 .heading-4 {
   /* Card titles, ingredient names, feature labels */
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-lg);
   font-weight: var(--weight-medium);
   line-height: var(--leading-snug);
@@ -180,7 +188,7 @@ These classes control visual presentation only. They do not imply any HTML eleme
 
 .heading-5 {
   /* Smallest heading — tight labels, metadata headings */
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-base);
   font-weight: var(--weight-medium);
   line-height: var(--leading-snug);
@@ -200,7 +208,7 @@ The HTML element defines meaning. The class defines appearance.
 <h2 class="heading-1">What's Inside?</h2>
 
 <!-- Section headline that needs editorial weight: h2 with serif variant -->
-<h2 class="heading-1--serif">The science of ketone bodies</h2>
+<h2 class="heading-1--editorial">The science of ketone bodies</h2>
 
 <!-- Same-level h2 but in a tighter context (e.g., inside a two-column split): visually smaller -->
 <h2 class="heading-2">Clinically studied ingredients</h2>
@@ -228,7 +236,7 @@ Lattice should expose role language before it exposes raw size language. The rol
 | Role | Purpose | Default class mapping |
 |------|---------|------------------------|
 | display | Hero statement | `.heading-display` |
-| headline-xl | Major section headline | `.heading-1` or `.heading-1--serif` |
+| headline-xl | Major section headline | `.heading-1` or `.heading-1--editorial` |
 | headline-lg | Standard section headline | `.heading-2` |
 | headline-md | Subsection headline | `.heading-3` |
 | headline-sm | Card or utility headline | `.heading-4` |
@@ -250,7 +258,7 @@ For body text/paragraphs, the same principle applies. The `<p>` element is alway
 
 ```css
 .text-xl {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-xl);
   font-weight: var(--weight-regular);
   line-height: var(--leading-snug);
@@ -258,7 +266,7 @@ For body text/paragraphs, the same principle applies. The `<p>` element is alway
 
 .text-lg {
   /* Hero sublines, featured descriptions, pull quotes */
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-lg);
   font-weight: var(--weight-regular);
   line-height: var(--leading-normal);
@@ -266,7 +274,7 @@ For body text/paragraphs, the same principle applies. The `<p>` element is alway
 
 .text-base {
   /* Default body copy — this is the baseline, applied by default to <p> */
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-base);
   font-weight: var(--weight-regular);
   line-height: var(--leading-normal);
@@ -274,7 +282,7 @@ For body text/paragraphs, the same principle applies. The `<p>` element is alway
 
 .text-sm {
   /* Captions, secondary descriptions, nav items, button labels */
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--weight-regular);
   line-height: var(--leading-normal);
@@ -282,7 +290,7 @@ For body text/paragraphs, the same principle applies. The `<p>` element is alway
 
 .text-xs {
   /* Fine print, legal text, timestamps */
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-xs);
   font-weight: var(--weight-regular);
   line-height: var(--leading-normal);
@@ -290,7 +298,7 @@ For body text/paragraphs, the same principle applies. The `<p>` element is alway
 
 .text-label {
   /* UI labels — same size family as body-sm, firmer tone */
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   line-height: var(--leading-normal);
@@ -341,7 +349,7 @@ Plex Mono has its own utility classes since it always pairs specific size + uppe
 ```css
 .mono-label {
   /* Standard eyebrow / spec label */
-  font-family: var(--font-mono);
+  font-family: var(--font-data);
   font-size: var(--text-sm);
   font-weight: var(--weight-regular);
   text-transform: uppercase;
@@ -350,7 +358,7 @@ Plex Mono has its own utility classes since it always pairs specific size + uppe
 
 .mono-caption {
   /* Smaller mono — stat descriptors, metadata, patent numbers */
-  font-family: var(--font-mono);
+  font-family: var(--font-data);
   font-size: var(--text-xs);
   font-weight: var(--weight-regular);
   text-transform: uppercase;
@@ -364,7 +372,7 @@ Stat numbers live outside the modular scale (they're too large and context-speci
 
 ```css
 .stat-number {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-stat);
   font-weight: var(--weight-medium);
   line-height: var(--leading-none);
@@ -378,23 +386,23 @@ Stat numbers live outside the modular scale (they're too large and context-speci
 
 This is the full list of base typography classes in the theme. Role language should map back to this inventory rather than generating context-specific variants.
 
-| Class | Font | Size Token | Weight | Leading | Tracking | Transforms |
-|-------|------|-----------|--------|---------|----------|------------|
-| `.heading-display` | serif | `--text-4xl` | light | tight | tight | — |
-| `.heading-1` | sans | `--text-3xl` | medium | tight | normal | — |
-| `.heading-1--serif` | serif | `--text-3xl` | light | tight | tight | — |
-| `.heading-2` | sans | `--text-2xl` | medium | tight | normal | — |
-| `.heading-3` | sans | `--text-xl` | medium | snug | normal | — |
-| `.heading-4` | sans | `--text-lg` | medium | snug | normal | — |
-| `.heading-5` | sans | `--text-base` | medium | snug | wide | — |
-| `.text-xl` | sans | `--text-xl` | regular | snug | — | — |
-| `.text-lg` | sans | `--text-lg` | regular | normal | — | — |
-| `.text-base` | sans | `--text-base` | regular | normal | — | — |
-| `.text-sm` | sans | `--text-sm` | regular | normal | — | — |
-| `.text-xs` | sans | `--text-xs` | regular | normal | — | — |
-| `.text-label` | sans | `--text-sm` | medium | normal | — | — |
-| `.mono-label` | mono | `--text-sm` | regular | — | mono | uppercase |
-| `.mono-caption` | mono | `--text-xs` | regular | — | mono | uppercase |
+| Class | Font Role | Size Token | Weight | Leading | Tracking | Transforms |
+|-------|-----------|-----------|--------|---------|----------|------------|
+| `.heading-display` | editorial | `--text-4xl` | light | tight | tight | — |
+| `.heading-1` | body | `--text-3xl` | medium | tight | normal | — |
+| `.heading-1--editorial` | editorial | `--text-3xl` | light | tight | tight | — |
+| `.heading-2` | body | `--text-2xl` | medium | tight | normal | — |
+| `.heading-3` | body | `--text-xl` | medium | snug | normal | — |
+| `.heading-4` | body | `--text-lg` | medium | snug | normal | — |
+| `.heading-5` | body | `--text-base` | medium | snug | wide | — |
+| `.text-xl` | body | `--text-xl` | regular | snug | — | — |
+| `.text-lg` | body | `--text-lg` | regular | normal | — | — |
+| `.text-base` | body | `--text-base` | regular | normal | — | — |
+| `.text-sm` | body | `--text-sm` | regular | normal | — | — |
+| `.text-xs` | body | `--text-xs` | regular | normal | — | — |
+| `.text-label` | body | `--text-sm` | medium | normal | — | — |
+| `.mono-label` | data | `--text-sm` | regular | — | mono | uppercase |
+| `.mono-caption` | data | `--text-xs` | regular | — | mono | uppercase |
 
 Plus `.stat-number` for display numbers outside the modular scale.
 
@@ -467,7 +475,7 @@ The most common typographic pattern on the site. A mono eyebrow sets the context
 
 ```html
 <span class="mono-label">CLINICALLY STUDIED · PATENTED FORMULA</span>
-<h2 class="heading-1--serif">Your brain's preferred fuel</h2>
+<h2 class="heading-1--editorial">Your brain's preferred fuel</h2>
 <p class="text-lg">Our formula delivers 4,800mg of human-identical ketone bodies
 directly to your brain — no fasting or keto diet required.</p>
 ```
@@ -530,15 +538,38 @@ All three families are Google Fonts / open source and can be self-hosted for per
 
 ---
 
+## Namespacing in Host Themes
+
+When Lattice is consumed inside a host theme that owns its own typography variables — Shopify Horizon defines `--font-body--family`, `--font-heading--family`, `--font-paragraph--family`; Bootstrap defines `--bs-body-font-family`; Tailwind exposes a `--font-*` family — the bare `--font-editorial`, `--font-body`, `--font-data` identifiers can read confusingly next to the host's parallel names even when they don't technically collide.
+
+Implementations consumed by a host theme should namespace Lattice's typography variables with a project prefix:
+
+```css
+:root {
+  --lattice-font-editorial: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+  --lattice-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --lattice-font-data: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
+}
+```
+
+The class API stays the same — `.heading-display`, `.heading-1`, `.mono-label`, and the rest of the inventory consume whatever variable names the implementation chose. Picking a prefix is an implementer decision, not a spec decision. The spec defines the roles; the implementation chooses how to identify them in CSS without colliding with its host.
+
+Greenfield projects with no host-theme collision concern can use the bare `--font-*` names from the spec directly.
+
+When a project chooses a prefix, every Lattice typography class definition in that project's CSS must use the prefixed form consistently. Mixing `--font-editorial` and `--lattice-font-editorial` in the same project defeats the purpose.
+
+---
+
 ## Rules
 
-1. **Three fonts, three roles.** Never use Plex Serif for body. Never use Plex Mono for headlines. Never use Inter for eyebrows.
+1. **Three roles, three families.** The editorial face is never used for body. The data face is never used for headlines. The body face is never used for eyebrows. Roles do not cross.
 2. **No bold (700).** Semi-bold (600) is the maximum weight, used only for inline `<strong>`.
-3. **Plex Mono is always uppercase, always letterspaced.** If it's not uppercase and letterspaced, it shouldn't be Plex Mono.
-4. **Plex Serif is used sparingly.** One hero headline and 1–2 section headlines per page via `.heading-display` or `.heading-1--serif`.
+3. **The data voice is always uppercase, always letterspaced.** If it's not uppercase and letterspaced, it shouldn't be the data face.
+4. **The editorial voice is used sparingly.** One hero headline and 1–2 section headlines per page via `.heading-display` or `.heading-1--editorial`.
 5. **Body text never exceeds `--measure` (65ch).** The grid enforces this.
-6. **Stat numbers use Inter, not Plex Serif.** Stats need to feel precise and modern, not editorial.
+6. **Stat numbers use the body voice, not the editorial voice.** Stats need to feel precise and modern, not editorial.
 7. **No decorative type treatments.** No text shadows, no gradient text, no outlined text, no animated text. The type stands on its own.
 8. **Semantic HTML is independent of visual size.** Use the heading/text classes to control appearance. An `<h2 class="heading-4">` is valid and expected.
 9. **14 typography classes total.** If the existing classes don't fit a new context, the design adjusts to the system — the system does not grow to accommodate one-off requests.
 10. **No context-specific heading classes.** Never create `.hero-h2`, `.card-title`, `.sidebar-heading`, or similar. Use the two-axis system: semantic element + visual class.
+11. **Variable names describe the role, not the family.** `--font-editorial`, `--font-body`, `--font-data` — never `--font-serif`, `--font-sans`, `--font-mono`. Class modifiers follow the same logic: `.heading-1--editorial`, never `.heading-1--serif`. The names survive any future typeface swap.
