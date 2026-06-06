@@ -1,18 +1,16 @@
 # Lattice
 
-Lattice is a design system built around derivation instead of selection.
+Lattice is a design system built around responsive logic instead of fixed screen assumptions.
 
-Instead of treating design as a series of isolated choices like picking font sizes, spacing values, button styles, and section layouts one by one, Lattice defines the logic that governs those decisions so interfaces stay coherent as they evolve.
+Rather than designing for a few breakpoints, it defines how typography, spacing, layout, color, and section composition should behave across the full spectrum of real device sizes.
 
-It is designed for teams who want design and implementation to stay structurally aligned, not drift apart.
+The goal is to make websites feel intentionally composed at 320px, 1440px, and everywhere between — without relying on ad hoc adjustments or one-off responsive fixes.
 
 ## Core Idea
 
-Most design systems document outputs.
+Typical responsive design starts with a few target breakpoints — mobile, tablet, desktop. Designers make layouts for those widths, then developers fill the gaps with media queries, overrides, and one-off adjustments.
 
-Lattice starts by documenting the rules that produce those outputs.
-
-That means:
+Lattice starts from behavior instead. It defines the rules that produce coherent output at any width:
 
 - typography is derived from a governed fluid scale
 - spacing is separated by behavior, not flattened into one ladder
@@ -107,14 +105,14 @@ A coded implementation layer may follow, but the documentation is the source of 
 
 ## Philosophy
 
-Typical design asks:
+Typical responsive design asks:
 
-"What looks right here?"
+"What should this look like at desktop?"
 
 Lattice asks:
 
-"What system can produce the right answer here, and keep producing it as the interface changes?"
+"How should this relationship behave as the viewport changes?"
 
 ## License
 
-No license has been declared yet.
+Lattice is released under the [MIT License](./LICENSE) — free to use, adapt, and build on, including commercially.
